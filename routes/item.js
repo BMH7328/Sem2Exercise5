@@ -41,10 +41,10 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   // get movie id
-  const item_id = req.params.id;
-  // update the movie
+  const item_id = req.params.id; // update the movie
   const updatedItem = await Item.findByIdAndUpdate(item_id, req.body, {
-    // new: true, // return the modified data
+    runValidators: true,
+    new: true, // return the modified data
   });
   res.send(updatedItem);
 });
